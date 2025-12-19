@@ -24,7 +24,7 @@
 			        return L.circleMarker(latlng, {
 				        radius: 8,
 				        fillColor: function (feature) {
-				            return '#0078ff',
+				            return '#0078ff'
 				        },
 //				        fillColor: function (feature) {
 //				            return '#0078ff'
