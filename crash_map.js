@@ -34,7 +34,6 @@
                                  return '#0078ff' // blue if not
                             }
 */
-                        },
 				        color: '#000',
 				        weight: 1,
 				        opacity: 1,
