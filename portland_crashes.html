@@ -56,13 +56,10 @@
                         return { // 5
                             fillColor: 'blue' // blue if not
                         };  // 4
-                    }; // 3
+                    } // 3
                 } // 2
             }).addTo(map);
-
-            // Optional: Fit map bounds to the new markers (if using a layer group/feature group)
-            // map.fitBounds(markersLayer.getBounds());
-        })
+       })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
