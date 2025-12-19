@@ -21,42 +21,26 @@
                     )
                 },
                 pointToLayer(feature, latlng) {
-			        return L.circleMarker(latlng, {
-				        radius: 8,
-				        fillColor: function (feature) {
-				            return '#0078ff'
-				        },
-//				        fillColor: function (feature) {
-//				            return '#0078ff'
-/*
-                            if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-                                 return '#ff7800' // red if fatality
-                            }
-                            else {
-                                 return '#0078ff' // blue if not
-                            }
-*/
-				        color: '#000',
-				        weight: 1,
-				        opacity: 1,
-				        fillOpacity: 0.8
-			        });
-		        },
-/*
-                style: function (feature) {
-                    console.log(feature.properties["MDOT ID"])
                     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-                        return {
-                            color: 'red' // red if fatality
-                        }
-                    }
-                    else {
-                        return {
-                            color: 'blue' // blue if not
-                        }
-                    }
-                }
-*/
+                        return L.circleMarker(latlng, {
+                            radius: 8,
+    				        fillColor: '#ff7800',
+                            color: '#000',
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        });
+		            } else {
+                        return L.circleMarker(latlng, {
+                            radius: 8,
+    				        fillColor: '#0078ff',
+                            color: '#000',
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        });
+		            },
+		        }
             }).addTo(map);
        }).catch(error => {
             console.error('Error fetching data:', error);
