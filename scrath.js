@@ -10,30 +10,29 @@
     // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
     fetch('Crashes_10_Years.geojson')
         .then(response => response.json())
-        .then(data => {  // 1( 2{
+        .then(data => {
             // 3. Process and add markers using L.geoJSON
-            L.geoJSON(data, { // 3( 4{
-                onEachFeature: function (feature, layer) { // 5{
-                    layer.bindPopup( // 6(
+            L.geoJSON(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup(
                         feature.properties["MDOT ID"] +
                         " : " +
                         feature.properties["Crash Date"]
-                    ); // 5{
-                } // 4{
-                style: function (feature) { // 3
-                    if (feature.properties["K - Fatalities Count"] > 0) { // 4
-                        return { // 5
+                    )
+                }
+                style: function (feature) {
+                    if (feature.properties["K - Fatalities Count"] > 0) {
+                        return {
                             fillColor: 'red' // red if fatality
-                        };  // 4
-                    } // 3
-                    else { // 4
-                        return { // 5
+                        }
+                    }
+                    else {
+                        return {
                             fillColor: 'blue' // blue if not
-                        };  // 4
-                    } // 3
-                } // 2
+                        }
+                    }
+                }
             }).addTo(map);
-       })
-        .catch(error => {
+       }).catch(error => {
             console.error('Error fetching data:', error);
         });
