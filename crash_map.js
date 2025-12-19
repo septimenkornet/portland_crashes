@@ -24,12 +24,11 @@
 			        return L.circleMarker(latlng, {
 				        radius: 8,
 				        fillColor: function (feature) {
-                            console.log(feature.properties["MDOT ID"])
                             if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-                                 return 'red' // red if fatality
+                                 return '#ff7800' // red if fatality
                             }
                             else {
-                                 return 'blue' // blue if not
+                                 return '#0078ff' // blue if not
                             }
                         },
 				        color: '#000',
