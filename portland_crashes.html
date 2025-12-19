@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portland Crashes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <style>
+        #mapid { height: 500px; }
+    </style>
+</head>
+<body>
+
+<div id="mapid"></div>
+
+<script>
+    // 1. Initialize the map
+    const map = L.map('mapid').setView([-70.26189624400604,43.65734974239763], 5);
+
+    // Add a tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© [OpenStreetMap]() contributors'
+    }).addTo(map);
+
+    // 2. Fetch the remote data
+    // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
+    fetch('Crashes_10_Years.geojson')
+        .then(response => response.json())
+        .then(data => {
+            // 3. Process and add markers using L.geoJSON
+            L.geoJSON(data, {
+                onEachFeature: function (feature, layer) {
+                    // Optional: Bind a popup to each marker using data properties
+                    // if (feature.properties && feature.properties.name) {
+                        layer.bindPopup(feature.properties["MDOT ID"]);
+                    // }
+                }
+            }).addTo(map);
+
+            // Optional: Fit map bounds to the new markers (if using a layer group/feature group)
+            // map.fitBounds(markersLayer.getBounds());
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+</script>
+
+</body>
+</html>
