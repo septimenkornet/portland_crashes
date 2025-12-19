@@ -23,7 +23,15 @@
                 pointToLayer(feature, latlng) {
 			        return L.circleMarker(latlng, {
 				        radius: 8,
-				        fillColor: '#ff7800',
+				        fillColor: function (feature) {
+                            console.log(feature.properties["MDOT ID"])
+                            if (Number(feature.properties["K - Fatalities Count"]) > 0) {
+                                 return 'red' // red if fatality
+                            }
+                            else {
+                                 return 'blue' // blue if not
+                            }
+                        },
 				        color: '#000',
 				        weight: 1,
 				        opacity: 1,
