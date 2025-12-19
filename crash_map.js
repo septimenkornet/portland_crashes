@@ -39,7 +39,7 @@
                             opacity: 1,
                             fillOpacity: 0.8
                         });
-		            },
+		            }
 		        }
             }).addTo(map);
        }).catch(error => {
