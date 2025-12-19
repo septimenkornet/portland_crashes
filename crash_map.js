@@ -23,8 +23,9 @@
                 pointToLayer(feature, latlng) {
 			        return L.circleMarker(latlng, {
 				        radius: 8,
-				        fillColor: function (feature) {
-				            return '#0078ff'
+				        fillColor: '#0078ff'
+//				        fillColor: function (feature) {
+//				            return '#0078ff'
 /*
                             if (Number(feature.properties["K - Fatalities Count"]) > 0) {
                                  return '#ff7800' // red if fatality
