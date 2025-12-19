@@ -21,6 +21,7 @@
                     )
                 },
                 style: function (feature) {
+                    console.log(feature.properties["MDOT ID"])
                     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
                         return {
                             color: 'red' // red if fatality
