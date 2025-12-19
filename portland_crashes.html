@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Portland Crashes</title>
+    <title>Portland Cyclist and Pedestrian Crashes</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -25,7 +25,7 @@
 
 <script>
     // 1. Initialize the map
-    const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 10);
+    const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
 
     // Add a tile layer (OpenStreetMap)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -40,14 +40,16 @@
             // 3. Process and add markers using L.geoJSON
             L.geoJSON(data, {
                 onEachFeature: function (feature, layer) {
-                    // Optional: Bind a popup to each marker using data properties
-                    // if (feature.properties && feature.properties.name) {
-                        layer.bindPopup(
-                                feature.properties["MDOT ID"] +
-                                " : " +
-                                feature.properties["Crash Date"]
-                           );
-                    // }
+                    layer.bindPopup(
+                        feature.properties["MDOT ID"] +
+                        " : " +
+                        feature.properties["Crash Date"]
+                    );
+                    if (feature.properties["K - Fatalities Count"] > 0) {
+                        feature.target.setStyle({
+                            fillColor: 'red' // Change color if fatality
+                        });
+                    };
                 }
             }).addTo(map);
 
