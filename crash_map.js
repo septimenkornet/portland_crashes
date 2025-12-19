@@ -21,7 +21,7 @@
                     )
                 },
                 style: function (feature) {
-                    if (feature.properties["K - Fatalities Count"] > 0) {
+                    if (Number(feature.properties["K - Fatalities Count"]) > 0) {
                         return {
                             fillColor: 'red' // red if fatality
                         }
