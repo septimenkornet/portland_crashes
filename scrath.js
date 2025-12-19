@@ -19,7 +19,7 @@
                         " : " +
                         feature.properties["Crash Date"]
                     )
-                }
+                },
                 style: function (feature) {
                     if (feature.properties["K - Fatalities Count"] > 0) {
                         return {
