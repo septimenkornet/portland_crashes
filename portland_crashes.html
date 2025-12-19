@@ -45,10 +45,16 @@
                         " : " +
                         feature.properties["Crash Date"]
                     );
+                };
+                style: function (feature) {
                     if (feature.properties["K - Fatalities Count"] > 0) {
-                        layer.target.setStyle({
-                            fillColor: 'red' // Change color if fatality
-                        });
+                        return {
+                            fillColor: 'red' // red if fatality
+                        }
+                    } else {
+                        return {
+                            fillColor: 'blue' // blue if not
+                        }
                     };
                 }
             }).addTo(map);
