@@ -23,12 +23,12 @@
                 style: function (feature) {
                     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
                         return {
-                            fillColor: 'red' // red if fatality
+                            color: 'red' // red if fatality
                         }
                     }
                     else {
                         return {
-                            fillColor: 'blue' // blue if not
+                            color: 'blue' // blue if not
                         }
                     }
                 }
