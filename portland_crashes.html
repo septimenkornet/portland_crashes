@@ -36,16 +36,16 @@
     // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
     fetch('Crashes_10_Years.geojson')
         .then(response => response.json())
-        .then(data => {  // 1
+        .then(data => {  // 1( 2{
             // 3. Process and add markers using L.geoJSON
-            L.geoJSON(data, { // 2
-                onEachFeature: function (feature, layer) { // 3
-                    layer.bindPopup(
+            L.geoJSON(data, { // 3( 4{
+                onEachFeature: function (feature, layer) { // 5{
+                    layer.bindPopup( // 6(
                         feature.properties["MDOT ID"] +
                         " : " +
                         feature.properties["Crash Date"]
-                    );
-                } // 2
+                    ); // 5{
+                } // 4{
                 style: function (feature) { // 3
                     if (feature.properties["K - Fatalities Count"] > 0) { // 4
                         return { // 5
