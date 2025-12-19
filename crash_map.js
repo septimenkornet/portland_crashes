@@ -20,6 +20,17 @@
                         feature.properties["Crash Date"]
                     )
                 },
+                pointToLayer(feature, latlng) {
+			        return L.circleMarker(latlng, {
+				        radius: 8,
+				        fillColor: '#ff7800',
+				        color: '#000',
+				        weight: 1,
+				        opacity: 1,
+				        fillOpacity: 0.8
+			        });
+		        },
+/*
                 style: function (feature) {
                     console.log(feature.properties["MDOT ID"])
                     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
@@ -33,6 +44,7 @@
                         }
                     }
                 }
+*/
             }).addTo(map);
        }).catch(error => {
             console.error('Error fetching data:', error);
