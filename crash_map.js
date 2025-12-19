@@ -24,12 +24,15 @@
 			        return L.circleMarker(latlng, {
 				        radius: 8,
 				        fillColor: function (feature) {
+				            return '#0078ff'
+/*
                             if (Number(feature.properties["K - Fatalities Count"]) > 0) {
                                  return '#ff7800' // red if fatality
                             }
                             else {
                                  return '#0078ff' // blue if not
                             }
+*/
                         },
 				        color: '#000',
 				        weight: 1,
