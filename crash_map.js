@@ -5,13 +5,11 @@ var getlabel = function (feature) {
     if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
         retstr += "\nCyclist"}
     if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
-        retstr += "\nPedestrian "
-    }
+        retstr += "\nPedestrian " }
     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-        retstr += "killed"
-    }
-    if ( Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
-        retstr += "injured"
+        retstr += "killed" }
+    if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
+        retstr += "seriously injured"
     }
     return retstr
 }
