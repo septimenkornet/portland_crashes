@@ -2,9 +2,9 @@ var getlabel = function (feature) {
     var retstr = "DOT ID: " + feature.properties["MDOT ID"] +
         ", date: " +
         feature.properties["Crash Date"]
-    if ( feature.properties["Bicycle Yes/No"] = "Y" ) {
+    if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
         retstr += "\nCyclist"}
-    if ( feature.properties["Pedestrian Yes/No"] = "Y" ) {
+    if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
         retstr += "\nPedestrian"
     }
     return retstr
