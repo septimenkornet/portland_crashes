@@ -51,6 +51,7 @@ fetch('all_crashes.geojson')
     .then(data => {
         // 3. Process and add markers using L.geoJSON
         L.geoJSON(data, {
+            cluster: True,
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(
                     getlabel(feature)
