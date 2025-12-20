@@ -45,7 +45,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // 2. Fetch the remote data
 // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
-fetch('Crashes_10_Years.geojson')
+//fetch('Crashes_10_Years.geojson')
+fetch('all_crashes.geojson')
     .then(response => response.json())
     .then(data => {
         // 3. Process and add markers using L.geoJSON
