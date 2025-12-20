@@ -51,41 +51,14 @@ fetch('all_crashes.geojson')
     .then(data => {
         // 3. Process and add markers using L.geoJSON
         L.geoJSON(data, {
-            cluster: True,
+//            cluster: True,
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(
                     getlabel(feature)
-/*
-                    feature.properties["MDOT ID"] +
-                    " : " +
-                    feature.properties["Crash Date"]
-*/
                 )
             },
             pointToLayer(feature, latlng) {
                 return getMarker(feature, latlng)
-
-/*
-                if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-                    return L.circleMarker(latlng, {
-                        radius: 8,
-                        fillColor: '#ff7800',
-                        color: '#000',
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 0.8
-                    });
-                } else {
-                    return L.circleMarker(latlng, {
-                        radius: 8,
-                        fillColor: '#0078ff',
-                        color: '#000',
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 0.8
-                    });
-                }
-*/
             }
         }).addTo(map);
    }).catch(error => {
