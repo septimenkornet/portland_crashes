@@ -7,6 +7,7 @@ var getlabel = function (feature) {
     if ( feature.properties["Pedestrian Yes/No"] = "Y" ) {
         retstr += "\nPedestrian"
     }
+    return retstr
 }
 
 // 1. Initialize the map
