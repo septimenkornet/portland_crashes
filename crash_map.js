@@ -10,6 +10,27 @@ var getlabel = function (feature) {
     return retstr
 }
 
+var circleMarkerStyle = {
+    radius: 8,
+    fillColor: '#ff7800',
+    color: '#000',
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+}
+
+var getMarker = function (feature, latlng) {
+    var localStyle = circleMarkerStyle;
+    if (Number(feature.properties["K - Fatalities Count"]) > 0) {
+        localStyle.fillColor = "#ff7800"
+    } else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
+        localStyle.fillColor = "#ff7800"
+    } else {
+        localStyle.fillColor = "#88ff88"
+    }
+    return L.circleMarker(latlng, localStyle);
+}
+
 // 1. Initialize the map
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
 
@@ -36,6 +57,9 @@ fetch('Crashes_10_Years.geojson')
                 )
             },
             pointToLayer(feature, latlng) {
+                return getMarker(latlng, feature)
+
+/*
                 if (Number(feature.properties["K - Fatalities Count"]) > 0) {
                     return L.circleMarker(latlng, {
                         radius: 8,
@@ -55,6 +79,7 @@ fetch('Crashes_10_Years.geojson')
                         fillOpacity: 0.8
                     });
                 }
+*/
             }
         }).addTo(map);
    }).catch(error => {
