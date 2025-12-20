@@ -12,7 +12,7 @@ var getlabel = function (feature) {
 
 var circleMarkerStyle = {
     radius: 8,
-    fillColor: '#ff7800',
+    fillColor: '#ffffff',
     color: '#000',
     weight: 1,
     opacity: 1,
