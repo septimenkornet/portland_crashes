@@ -26,7 +26,7 @@ var getMarker = function (feature, latlng) {
     } else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
         localStyle.fillColor = "#ff7800"
     } else {
-        localStyle.fillColor = "#88ff88"
+        localStyle.fillColor = "#888888"
     }
     return L.circleMarker(latlng, localStyle);
 }
