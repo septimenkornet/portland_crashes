@@ -57,7 +57,7 @@ fetch('Crashes_10_Years.geojson')
                 )
             },
             pointToLayer(feature, latlng) {
-                return getMarker(latlng, feature)
+                return getMarker(feature, latlng)
 
 /*
                 if (Number(feature.properties["K - Fatalities Count"]) > 0) {
