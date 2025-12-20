@@ -24,9 +24,9 @@ var getMarker = function (feature, latlng) {
     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
         localStyle.fillColor = "#ff7800"
     } else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
-        localStyle.fillColor = "#ff7800"
+        localStyle.fillColor = "#0078ff"
     } else {
-        localStyle.fillColor = "#888888"
+        localStyle.fillColor = "#00ff00"
     }
     return L.circleMarker(latlng, localStyle);
 }
