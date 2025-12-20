@@ -3,7 +3,7 @@ var getlabel = function (feature) {
         ", date: " +
         feature.properties["Crash Date"]
     if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
-        retstr += "\nCyclist"}
+        retstr += "\nCyclist "}
     if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
         retstr += "\nPedestrian " }
     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
