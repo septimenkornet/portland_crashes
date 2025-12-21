@@ -59,11 +59,14 @@ fetch('all_crashes.geojson')
                     getlabel(feature)
                 )
             },
+/*
             pointToLayer(feature, latlng) {
                 return getMarker(feature, latlng)
+*/
+            l.Marker(latlng)
             }
-        }).addTo(markers);
+        }).addTo(map);
    }).catch(error => {
         console.error('Error fetching data:', error);
    });
-map.addLayer(markers);
+// map.addLayer(markers);
