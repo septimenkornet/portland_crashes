@@ -100,7 +100,8 @@ fetch('all_crashes.geojson')
    }).catch(error => {
         console.error('Error fetching data:', error);
    });
-map.addLayer(markers);
+//map.addLayer(markers);
+markers.addTo(map);
 </script>
 
 </body>
