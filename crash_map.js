@@ -35,10 +35,10 @@ var getMarker = function (feature, latlng) {
     return L.circleMarker(latlng, localStyle);
 }
 
-console.log("Entered crash_map")
+console.log("Entered crash_map");
 // 1. Initialize the map
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
-console.log("Created map")
+console.log("Created map");
 
 // Add a tile layer (OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -47,7 +47,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Create a Marker Cluster Group
 var markers = L.markerClusterGroup();
-console.log("Created markers")
+console.log("Created markers");
 
 // 2. Fetch the remote data
 // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
