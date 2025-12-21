@@ -43,6 +43,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
 
+// Create a Marker Cluster Group
+        var markers = L.markerClusterGroup();
+
 // 2. Fetch the remote data
 // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
 //fetch('Crashes_10_Years.geojson')
@@ -51,7 +54,6 @@ fetch('all_crashes.geojson')
     .then(data => {
         // 3. Process and add markers using L.geoJSON
         L.geoJSON(data, {
-//            cluster: True,
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(
                     getlabel(feature)
@@ -60,7 +62,8 @@ fetch('all_crashes.geojson')
             pointToLayer(feature, latlng) {
                 return getMarker(feature, latlng)
             }
-        }).addTo(map);
+        }).addTo(markers);
    }).catch(error => {
         console.error('Error fetching data:', error);
-    });
+   });
+map.addLayer(markers);
