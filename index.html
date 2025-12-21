@@ -95,9 +95,12 @@
                         getlabel(feature)
                     )
                 },
+<!--
                 pointToLayer(feature, latlng) {
                     return getMarker(feature, latlng)
                 }
+-->
+                L.Marker(latlng)
             }).addTo(markers);
        }).catch(error => {
             console.error('Error fetching data:', error);
