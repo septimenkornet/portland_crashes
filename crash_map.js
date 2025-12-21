@@ -46,8 +46,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Create a Marker Cluster Group
-var markers = L.markerClusterGroup();
-console.log("Created markers");
+// var markers = L.markerClusterGroup();
+// console.log("Created markers");
 
 // 2. Fetch the remote data
 // Replace 'your_remote_data_source.geojson' with your actual API endpoint or GeoJSON file URL
