@@ -15,25 +15,25 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 
-    <!-- 2. Include Leaflet.markercluster CSS and JS -->
+    <!-- 2. Include Leaflet.markercluster CSS and JS
     <link rel="stylesheet" href="Leaflet.markercluster-1.1.0/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="Leaflet.markercluster-1.1.0/dist/MarkerCluster.Default.css" />
     <script src="Leaflet.markercluster-1.1.0/dist/leaflet.markercluster.js" />
+-->
 
-<!--
     <style>
         #mapid { height: 100vh; }
     </style>
--->
+
 </head>
 <body>
 
 <div id="mapid"></div>
 
-<script src="crash_map.js"></script>
+// <script src="crash_map.js"></script>
 
 
-<!--
+
 <script>
 var getlabel = function (feature) {
     var retstr = "DOT ID: " + feature.properties["MDOT ID"] +
@@ -72,7 +72,7 @@ var getMarker = function (feature, latlng) {
     return L.circleMarker(latlng, localStyle);
 }
 
-// 1. Initialize the map
+// Initialize the map
 var map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
 
 // Add a tile layer (OpenStreetMap)
@@ -105,8 +105,8 @@ fetch('all_crashes.geojson')
    });
 //map.addLayer(markers);
 markers.addTo(map);
-</script>
--->
+</ script>
+
 
 </body>
 </html>
