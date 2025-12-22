@@ -73,7 +73,8 @@ const circleMarkerStyle = {
 
 var getMarker = function (feature, latlng) {
     var localStyle = circleMarkerStyle;
-	localStyle.fillcolor = getcategory(feature)[1];
+    var color = getcategory(feature)[1];
+	localStyle.fillcolor = color;
     return L.circleMarker(latlng, localStyle);
 }
 
