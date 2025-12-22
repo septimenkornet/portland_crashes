@@ -20,28 +20,38 @@
 
 <script>
 
-const categories = ['killed', 'seriously injured', 'injured', 'no injury reported'];
-const colors = ['#ff0000', '#0000ff', '#00ff00', '#808080']; // Corresponding colors
+const categories = ['killed', 'seriously injured', 'injured', 'possibly injured', 'no injury reported'];
+const colors = ['#ff0000', '#0000ff', '#00ff00', '#007878', '#808080']; // Corresponding colors
+
+var getcategory = function (feature) {
+    if (Number(feature.properties["K - Fatalities Count"]) > 0) {
+        return 0
+    }
+    else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
+        return 1
+    }
+    else if (Number(feature.properties["B - Suspected Minor Injuries Count"]) > 0) {
+        return 2
+    }
+    else if (Number(feature.properties["C - Possible Injuries Count"]) > 0) {
+        return 3
+    }
+    else {
+    	return 4
+    }
+}
 
 var getlabel = function (feature) {
     var retstr = "DOT ID: " + feature.properties["MDOT ID"] +
         ", date: " +
         feature.properties["Crash Date"]
     if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
-        retstr += "\nCyclist: "}
-    if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
-        retstr += "\nPedestrian: " }
-    if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-        retstr += categories[0] }
-    else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
-        retstr += categories[1]
+        retstr += "\nCyclist: "
     }
-    else if (Number(feature.properties["B - Suspected Minor Injuries Count"]) > 0) {
-        retstr += categories[2]
+    else if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
+        retstr += "\nPedestrian: "
     }
-    else {
-        retstr += categories[3]
-    }
+    retstr += categories[getcategory(feature)]
     return retstr
 }
 
@@ -56,15 +66,7 @@ var circleMarkerStyle = {
 
 var getMarker = function (feature, latlng) {
     var localStyle = circleMarkerStyle;
-    if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-        localStyle.fillColor = colors[0]
-    } else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
-        localStyle.fillColor = colors[1]
-    } else if (Number(feature.properties["B - Suspected Minor Injuries Count"]) > 0) {
-        localStyle.fillColor = colors[2]
-    } else {
-        localStyle.fillColor = colors[3]
-    }
+	localStyle.fillcolor = colors[getcategory(feature)]
     return L.circleMarker(latlng, localStyle);
 }
 
@@ -78,6 +80,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
 
+// Create legend
 var legend = L.control({position: 'topright'});
 
 legend.onAdd = function (map) {
