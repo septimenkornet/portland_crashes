@@ -13,5 +13,5 @@
     margin-right: 8px;
     opacity: 0.7;
     /* You may need to add border-radius for circles if using circle markers */
-    /* border-radius: 50%; */
+    border-radius: 50%;
 }
