@@ -96,8 +96,8 @@ legend.onAdd = function (map) {
 
     for (var i = 0; i < categories.length; i++) {
         div.innerHTML += labels.push(
-            '<i style="background:' + colors[i] + '"></i> ' +
-            (categories[i] ? categories[i] : '+')
+            '<i style="background:' + categories[i][1] + '"></i> ' +
+            (categories[i][0] ? categories[i][0] : '+')
         );
     }
     div.innerHTML = labels.join('<br>');
