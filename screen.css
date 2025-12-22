@@ -4,6 +4,10 @@
 	border: 1px solid #ccc;
 }
 
+#mapid {
+	height: 100vh;
+}
+
 #progress {
     display: none;
     position: absolute;
