@@ -18,18 +18,28 @@
 <div id="mapid"></div>
 
 <script>
+
+const categories = ['killed', 'seriously injured', 'injured', 'no injury reported'];
+const colors = ['#ff7800', '#0078ff', '#007800', '#808080']; // Corresponding colors
+
 var getlabel = function (feature) {
     var retstr = "DOT ID: " + feature.properties["MDOT ID"] +
         ", date: " +
         feature.properties["Crash Date"]
     if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
-        retstr += "\nCyclist "}
+        retstr += "\nCyclist: "}
     if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
-        retstr += "\nPedestrian " }
+        retstr += "\nPedestrian: " }
     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-        retstr += "killed" }
-    if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
-        retstr += "seriously injured"
+        retstr += categories[0] }
+    else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
+        retstr += categories[1]
+    }
+    else if (Number(feature.properties["B - Suspected Minor Injuries Count"]) > 0) {
+        retstr += categories[2]
+    }
+    else {
+        retstr += categories[3]
     }
     return retstr
 }
@@ -46,11 +56,13 @@ var circleMarkerStyle = {
 var getMarker = function (feature, latlng) {
     var localStyle = circleMarkerStyle;
     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
-        localStyle.fillColor = "#ff7800"
+        localStyle.fillColor = colors[0]
     } else if (Number(feature.properties["A - Suspected Serious Injury Count"]) > 0) {
-        localStyle.fillColor = "#0078ff"
+        localStyle.fillColor = colors[1]
+    } else if (Number(feature.properties["B - Suspected Minor Injuries Count"]) > 0) {
+        localStyle.fillColor = colors[2]
     } else {
-        localStyle.fillColor = "#00ff00"
+        localStyle.fillColor = colors[3]
     }
     return L.circleMarker(latlng, localStyle);
 }
@@ -64,6 +76,26 @@ console.log("Created map");
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
+
+var legend = L.control({position: 'topright'});
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    categories,
+    colors,
+    var labels = ['<strong>Categories</strong>'];
+
+    for (var i = 0; i < categories.length; i++) {
+        div.innerHTML += labels.push(
+            '<i style="background:' + colors[i] + '"></i> ' +
+            (categories[i] ? categories[i] : '+')
+        );
+    }
+    div.innerHTML = labels.join('<br>');
+    return div;
+};
+
+legend.addTo(map);
 
 // Create a Marker Cluster Group
 var markers = L.markerClusterGroup();
