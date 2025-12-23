@@ -20,6 +20,13 @@
 
 <script>
 
+const driveractions= [
+	"Driver Action 1 Unit 1 Description",
+	"Driver Action 2 Unit 1 Description",
+	"Driver Action 1 Unit 2 Description",
+	"Driver Action 2 Unit 2 Description",
+]
+
 const categories = [
 	['killed', '#ff0000'],
 	['seriously injured', '#0000ff'],
@@ -59,10 +66,11 @@ var getlabel = function (feature) {
         retstr += "<br>Pedestrian: "
     }
     retstr += getcategory(feature)[0];
-    retstr += "<br>Driver action reported: ";
-    var action = feature.properties["Driver Action 1 Unit 1 Description"];
-    retstr += action ? action : "[none reported]"
-    return retstr
+    retstr += "<br>Driver action[s] reported:";
+    for (var i = 0; i < driveractions.length; i++) {
+    	retstr += "<br>" + feature.properties[driveractions[i]]
+	}
+	return retstr
 }
 
 const circleMarkerStyle = {
