@@ -22,7 +22,9 @@
 
 const driveractions= [
 	"Driver Action 1 Unit 1 Description",
-	"Driver Action 2 Unit 1 Description",
+	"Driver Action 2 Unit 1 Description"
+]
+const victimactions= [
 	"Driver Action 1 Unit 2 Description",
 	"Driver Action 2 Unit 2 Description",
 ]
@@ -67,6 +69,10 @@ var getlabel = function (feature) { // For use constructing popup
     retstr += "<br>Driver action[s] reported:";
     for (var i = 0; i < driveractions.length; i++) {
     	action = feature.properties[driveractions[i]]
+    	retstr += action ? "<br>" + action : "";
+    retstr += "<br>Victim action[s] reported:";
+    for (var i = 0; i < victimactions.length; i++) {
+    	action = feature.properties[victimactions[i]]
     	retstr += action ? "<br>" + action : "";
 	}
 	return retstr
