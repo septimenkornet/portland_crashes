@@ -70,14 +70,12 @@ var getlabel = function (feature) { // For use constructing popup
     retstr += "<br><i>Driver action[s] reported:</i>";
     for (var i = 0; i < driveractions.length; i++) {
     	action = feature.properties[driveractions[i]];
-    	retstr +=  `<br>${i + 1}. `;
-    	retstr += action ? `<br>${i}. ${action}` : "";
+    	retstr +=  `<br>${i + 1}. ${action}`;
     }
     retstr += "<br><i>Victim action[s] reported:</i>";
     for (var i = 0; i < victimactions.length; i++) {
     	action = feature.properties[victimactions[i]];
-    	retstr +=  `<br>${i + 1}. `;
-    	retstr += action ? `<br>${i}. ${action}` : "";
+    	retstr +=  `<br>${i + 1}. ${action}`;
 	}
 	return retstr
 }
