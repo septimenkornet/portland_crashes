@@ -68,7 +68,8 @@ var getlabel = function (feature) {
     retstr += getcategory(feature)[0];
     retstr += "<br>Driver action[s] reported:";
     for (var i = 0; i < driveractions.length; i++) {
-    	retstr += "<br>" + feature.properties[driveractions[i]]
+    	action = feature.properties[driveractions[i]]
+    	retstr += action ? "<br>" + action : "";
 	}
 	return retstr
 }
