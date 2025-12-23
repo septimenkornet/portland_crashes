@@ -58,7 +58,9 @@ var getlabel = function (feature) {
     else if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
         retstr += "\nPedestrian: "
     }
-    retstr += getcategory(feature)[0];
+    retstr += getcategory(feature)[0] +
+    "\n Driver action reported: " +
+    feature.properties["Driver Action 1 Unit 1 Description"];
     return retstr
 }
 
