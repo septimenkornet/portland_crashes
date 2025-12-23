@@ -53,13 +53,13 @@ var getlabel = function (feature) {
         ", date: " +
         feature.properties["Crash Date"]
     if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
-        retstr += "\nCyclist: "
+        retstr += "<br>Cyclist: "
     }
     else if ( feature.properties["Pedestrian Yes/No"] == "Y" ) {
-        retstr += "\nPedestrian: "
+        retstr += "<br>Pedestrian: "
     }
     retstr += getcategory(feature)[0];
-    retstr += "\nDriver action reported: ";
+    retstr += "<br>Driver action reported: ";
     var action = feature.properties["Driver Action 1 Unit 1 Description"];
     retstr += action ? action : "[none reported]"
     return retstr
