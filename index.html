@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!--Author: Michael Smith, extensively plagiarized from Leaflet example repository-->
 <head>
     <title>Portland Cyclist and Pedestrian Crashes</title>
     <meta charset="utf-8" />
@@ -11,7 +12,6 @@
 	<link rel="stylesheet" href="node_modules/leaflet.markercluster/dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 	<script src="node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
-
 </head>
 
 <body>
@@ -27,15 +27,13 @@ const driveractions= [
 	"Driver Action 2 Unit 2 Description",
 ]
 
-const categories = [
+const categories = [ // [label, color of marker]
 	['killed', '#ff0000'],
 	['seriously injured', '#0000ff'],
 	['injured', '#00ff00'],
 	['possibly injured', '#0080A0'],
 	['no injury reported', '#A0A0A0']
 ];
-
-const colors = ['#ff0000', '#0000ff', '#00ff00', '#007878', '#808080']; // Corresponding colors
 
 var getcategory = function (feature) {
     if (Number(feature.properties["K - Fatalities Count"]) > 0) {
@@ -55,7 +53,7 @@ var getcategory = function (feature) {
     }
 }
 
-var getlabel = function (feature) {
+var getlabel = function (feature) { // For use constructing popup
     var retstr = "DOT ID: " + feature.properties["MDOT ID"] +
         ", date: " +
         feature.properties["Crash Date"]
@@ -89,8 +87,7 @@ var getMarker = function (feature, latlng) {
     return L.circleMarker(latlng, localStyle);
 }
 
-console.log("Entered crash_map");
-// 1. Initialize the map
+// Initialize the map
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
 console.log("Created map");
 
