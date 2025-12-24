@@ -101,6 +101,8 @@ console.log("Created map");
 
 // Add a tile layer (OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 24,         // Allows user to zoom in up to level 24 on the map
+    maxNativeZoom: 19,   // Tells Leaflet to stop fetching new tiles past 19 and scale existing ones
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
 
@@ -125,6 +127,7 @@ legend.addTo(map);
 
 // Create a Marker Cluster Group
 var markers = L.markerClusterGroup({
+	maxZoom: 24,
     disableClusteringAtZoom: 18, // Markers will decluster at zoom level 18 and below
     maxClusterRadius: 20
 });
