@@ -105,6 +105,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxNativeZoom: 19,   // Tells Leaflet to stop fetching new tiles past 19 and scale existing ones
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
+url = "https://nominatim.openstreetmap.org/search.php?city=portland&state=maine&polygon_geojson=1&format=jsonv2"
+fetch(url).then(function(response) {
+	return response.json();
+})
+.then(function(json) {
+	boundaryFeature = json[0].geojson;
+	L.geoJSON(boundaryFeature).addTo(map);
+});
 
 // Create legend
 var legend = L.control({position: 'topright'});
