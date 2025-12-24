@@ -97,7 +97,6 @@ var getMarker = function (feature, latlng) {
 
 // Initialize the map
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
-console.log("Created map");
 
 // Add a tile layer (OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -105,6 +104,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxNativeZoom: 19,   // Tells Leaflet to stop fetching new tiles past 19 and scale existing ones
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
+
+// Add Portland municipal boundary
 url = "https://nominatim.openstreetmap.org/search.php?city=portland&state=maine&polygon_geojson=1&format=jsonv2"
 fetch(url).then(function(response) {
 	return response.json();
@@ -139,7 +140,6 @@ var markers = L.markerClusterGroup({
     disableClusteringAtZoom: 18, // Markers will decluster at zoom level 18 and below
     maxClusterRadius: 20
 });
-console.log("Created markers");
 
 // Fetch the remote data
 fetch('all_crashes.geojson')
