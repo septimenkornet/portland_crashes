@@ -57,6 +57,7 @@ var getcategory = function (feature) {
 }
 
 var getlabel = function (feature) { // For use constructing popup
+	console.log("Entered getlabel");
     var retstr = "DOT ID: " + feature.properties["MDOT ID"] +
         ", date: " +
         feature.properties["Crash Date"]
@@ -77,6 +78,7 @@ var getlabel = function (feature) { // For use constructing popup
     	action = feature.properties[victimactions[i]];
     	retstr +=  `<br>${i + 1}. ${action}`;
 	}
+	console.log(retstr);
 	return retstr
 }
 
