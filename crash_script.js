@@ -94,7 +94,7 @@ var getMarker = function (feature, latlng) {
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
 
 // Add municipal boundary
-// getboundary(map);
+getboundary(map);
 
 // Add a tile layer (OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
