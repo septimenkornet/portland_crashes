@@ -105,6 +105,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© [OpenStreetMap]() contributors'
 }).addTo(map);
 
+<!--
 // Add Portland municipal boundary
 url = "https://nominatim.openstreetmap.org/search.php?city=portland&state=maine&polygon_geojson=1&format=jsonv2"
 fetch(url).then(function(response) {
@@ -118,6 +119,7 @@ fetch(url).then(function(response) {
 		fillOpacity: 0.10     // Fill opacity (0.0 to 1.0)
 	}).addTo(map);
 });
+-->
 
 // Create legend
 var legend = L.control({position: 'topright'});
@@ -142,7 +144,7 @@ legend.addTo(map);
 var markers = L.markerClusterGroup({
 	maxZoom: 24,
     disableClusteringAtZoom: 18, // Markers will decluster at zoom level 18 and below
-    maxClusterRadius: 20
+    maxClusterRadius: 30
 });
 
 // Fetch the remote data
