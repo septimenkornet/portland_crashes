@@ -35,8 +35,8 @@ var getcategory = function (feature) {
     }
 }
 
-var getboundary = function (map) { // Add Portland municipal boundary
-    url = "https://nominatim.openstreetmap.org/search.php?city=portland&state=maine&polygon_geojson=1&format=jsonv2"
+var getboundary = function (city, map) { // Add municipal boundary
+    url = `https://nominatim.openstreetmap.org/search.php?city=${city}&state=maine&polygon_geojson=1&format=jsonv2`
     fetch(url).then(function(response) {
         return response.json();
     })
@@ -84,6 +84,13 @@ const circleMarkerStyle = {
     fillOpacity: 0.8
 }
 
+const cities = [
+    'portland',
+    'south portland',
+    'falmouth',
+    'westbrook'
+    ];
+
 var getMarker = function (feature, latlng) {
     var localStyle = circleMarkerStyle;
 	localStyle.fillColor = getcategory(feature)[1];
@@ -93,8 +100,10 @@ var getMarker = function (feature, latlng) {
 // Initialize the map
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
 
-// Add municipal boundary
-getboundary(map);
+// Add municipal boundaries
+cities.forEach((city) => {
+  getboundary(city, map);
+});
 
 // Add a tile layer (OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
