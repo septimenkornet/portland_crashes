@@ -36,7 +36,7 @@ var getcategory = function (feature) {
 }
 
 var getboundary = function (city, map) { // Add municipal boundary
-    url = `https://nominatim.openstreetmap.org/search.php?city=${city}&state=maine&polygon_geojson=1&format=jsonv2"
+    url = `https://nominatim.openstreetmap.org/search.php?city=${city}&state=maine&polygon_geojson=1&format=jsonv2`
     fetch(url).then(function(response) {
         return response.json();
     })
@@ -89,7 +89,7 @@ const cities = [
     'south portland',
     'falmouth',
     'westbrook'
-    ]
+    ];
 
 var getMarker = function (feature, latlng) {
     var localStyle = circleMarkerStyle;
