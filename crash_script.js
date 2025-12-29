@@ -1,7 +1,7 @@
 
 const actions= [
 	"Driver Action 1 Unit 1 Description",
-	"Driver Action 2 Unit 1 Description"
+	"Driver Action 2 Unit 1 Description",
 	"Driver Action 1 Unit 2 Description",
 	"Driver Action 2 Unit 2 Description",
 ]
