@@ -1,10 +1,7 @@
 
-const driveractions= [
+const actions= [
 	"Driver Action 1 Unit 1 Description",
 	"Driver Action 2 Unit 1 Description"
-]
-
-const victimactions= [
 	"Driver Action 1 Unit 2 Description",
 	"Driver Action 2 Unit 2 Description",
 ]
@@ -62,16 +59,18 @@ var getlabel = function (feature) { // For use constructing popup
         retstr += "<br>Pedestrian: "
     }
     retstr += getcategory(feature)[0];
-    retstr += "<br><i>Driver action[s] reported:</i>";
-    for (var i = 0; i < driveractions.length; i++) {
-    	action = feature.properties[driveractions[i]];
+    retstr += "<br>Action[s] reported:";
+    for (var i = 0; i < actions.length; i++) {
+    	action = feature.properties[actions[i]];
     	retstr +=  `<br>${i + 1}. ${action}`;
     }
+/*
     retstr += "<br><i>Victim action[s] reported:</i>";
     for (var i = 0; i < victimactions.length; i++) {
     	action = feature.properties[victimactions[i]];
     	retstr +=  `<br>${i + 1}. ${action}`;
 	}
+*/
 	return retstr
 }
 
