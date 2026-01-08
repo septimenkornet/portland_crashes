@@ -1,9 +1,9 @@
 
 const actions= [
-	"Driver Action 1 Unit 1 Description",
-	"Driver Action 2 Unit 1 Description",
-	"Driver Action 1 Unit 2 Description",
-	"Driver Action 2 Unit 2 Description",
+	("Driver Action 1 Unit 1 Description", "Unit 1,Action 1"),
+	("Driver Action 2 Unit 1 Description", "Unit 1,Action 2"),
+	("Driver Action 1 Unit 2 Description", "Unit 2,Action 1"),
+	("Driver Action 2 Unit 1 Description", "Unit 2,Action 2"),
 ]
 
 const categories = [ // [label, color of marker]
@@ -62,16 +62,10 @@ var getlabel = function (feature) { // For use constructing popup
     retstr += getcategory(feature)[0];
     retstr += "<br>Action[s] reported:";
     for (var i = 0; i < actions.length; i++) {
-    	action = feature.properties[actions[i]];
-    	retstr +=  `<br>${i + 1}. ${action}`;
+        var actions_dup = actions[i];
+    	action = feature.properties[actions_dup[0]];
+    	retstr +=  `<br>${actions_dup[1]}: ${action}`;
     }
-/*
-    retstr += "<br><i>Victim action[s] reported:</i>";
-    for (var i = 0; i < victimactions.length; i++) {
-    	action = feature.properties[victimactions[i]];
-    	retstr +=  `<br>${i + 1}. ${action}`;
-	}
-*/
 	return retstr
 }
 
@@ -133,10 +127,8 @@ legend.addTo(map);
 
 // Create a Marker Cluster Group
 var markers = L.markerClusterGroup({
-//    spiderfyDistanceMultiplier: 2,
 	maxZoom: 24,
     disableClusteringAtZoom: 18, // Markers will decluster at zoom level 18 and below
-    // maxClusterRadius: 30 // Use default
 });
 
 // Fetch the remote data
