@@ -132,6 +132,7 @@ legend.addTo(map);
 
 // Create a Marker Cluster Group
 var markers = L.markerClusterGroup({
+    spiderfyDistanceMultiplier: 2,
 	maxZoom: 24,
     disableClusteringAtZoom: 18, // Markers will decluster at zoom level 18 and below
     // maxClusterRadius: 30 // Use default
