@@ -1,9 +1,9 @@
 
 const actions= [
-	["Driver Action 1 Unit 1 Description", "Unit 1,Action 1"],
-	["Driver Action 2 Unit 1 Description", "Unit 1,Action 2"],
-	["Driver Action 1 Unit 2 Description", "Unit 2,Action 1"],
-	["Driver Action 2 Unit 1 Description", "Unit 2,Action 2"],
+	["Driver Action 1 Unit 1 Description", "Unit 1, Action 1"],
+	["Driver Action 2 Unit 1 Description", "Unit 1, Action 2"],
+	["Driver Action 1 Unit 2 Description", "Unit 2, Action 1"],
+	["Driver Action 2 Unit 1 Description", "Unit 2, Action 2"],
 ]
 
 const categories = [ // [label, color of marker]
