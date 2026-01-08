@@ -40,6 +40,7 @@ var getboundary = function (city, map) { // Add municipal boundary
     .then(function(json) {
         boundaryFeature = json[0].geojson;
         L.geoJSON(boundaryFeature,{
+            interactive: false,   // Can't click it
             color: 'blue',        // Outline color
             fillColor: '#00004', // Fill color
             fillOpacity: 0.10     // Fill opacity (0.0 to 1.0)
@@ -100,9 +101,9 @@ var getMarker = function (feature, latlng) {
 const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 12);
 
 // Add municipal boundaries
-//cities.forEach((city) => {
-//  getboundary(city, map);
-//});
+cities.forEach((city) => {
+  getboundary(city, map);
+});
 
 // Add a tile layer (OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
