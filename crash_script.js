@@ -1,9 +1,9 @@
 
 const actions= [
-	"Driver Action 1 Unit 1 Description",
-	"Driver Action 2 Unit 1 Description",
-	"Driver Action 1 Unit 2 Description",
-	"Driver Action 2 Unit 2 Description",
+	["Driver Action 1 Unit 1 Description", "Unit 1, Action 1"],
+	["Driver Action 2 Unit 1 Description", "Unit 1, Action 2"],
+	["Driver Action 1 Unit 2 Description", "Unit 2, Action 1"],
+	["Driver Action 2 Unit 1 Description", "Unit 2, Action 2"],
 ]
 
 const categories = [ // [label, color of marker]
@@ -40,6 +40,7 @@ var getboundary = function (city, map) { // Add municipal boundary
     .then(function(json) {
         boundaryFeature = json[0].geojson;
         L.geoJSON(boundaryFeature,{
+            interactive: false,   // Can't click it
             color: 'blue',        // Outline color
             fillColor: '#00004', // Fill color
             fillOpacity: 0.10     // Fill opacity (0.0 to 1.0)
@@ -61,16 +62,10 @@ var getlabel = function (feature) { // For use constructing popup
     retstr += getcategory(feature)[0];
     retstr += "<br>Action[s] reported:";
     for (var i = 0; i < actions.length; i++) {
-    	action = feature.properties[actions[i]];
-    	retstr +=  `<br>${i + 1}. ${action}`;
+        [actions_key, actions_name] = actions[i];
+    	action = feature.properties[actions_key];
+    	retstr +=  `<br>${actions_name}: ${action}`;
     }
-/*
-    retstr += "<br><i>Victim action[s] reported:</i>";
-    for (var i = 0; i < victimactions.length; i++) {
-    	action = feature.properties[victimactions[i]];
-    	retstr +=  `<br>${i + 1}. ${action}`;
-	}
-*/
 	return retstr
 }
 
@@ -97,7 +92,7 @@ var getMarker = function (feature, latlng) {
 }
 
 // Initialize the map
-const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 15);
+const map = L.map('mapid').setView([43.65734974239763, -70.26189624400604], 12);
 
 // Add municipal boundaries
 cities.forEach((city) => {
@@ -134,7 +129,6 @@ legend.addTo(map);
 var markers = L.markerClusterGroup({
 	maxZoom: 24,
     disableClusteringAtZoom: 18, // Markers will decluster at zoom level 18 and below
-    // maxClusterRadius: 30 // Use default
 });
 
 // Fetch the remote data
