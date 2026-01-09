@@ -60,7 +60,7 @@ var getlabel = function (feature) { // For use constructing popup
         retstr += "<br>Pedestrian: "
     }
     retstr += getcategory(feature)[0];
-    retstr += "<br>Action[s] reported:";
+    retstr += "<br>Actions reported:";
     for (var i = 0; i < actions.length; i++) {
         [actions_key, actions_name] = actions[i];
     	action = feature.properties[actions_key];
