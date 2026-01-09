@@ -50,8 +50,8 @@ var getboundary = function (city, map) { // Add municipal boundary
 }
 
 var getlabel = function (feature) { // For use constructing popup
-    var retstr = `DOT ID: ${feature.properties["MDOT ID"]}: ` +
-        `${feature.properties["Crash Date"].split(' ', 2)[0]}, ` +
+    var retstr = `DOT ID: ${feature.properties["MDOT ID"]},<br>` +
+        `Date: ${feature.properties["Crash Date"].split(' ', 2)[0]}, ` +
         `${feature.properties["Time of Crash"]}`;
     if ( feature.properties["Bicycle Yes/No"] == "Y" ) {
         retstr += "<br>Cyclist: "
