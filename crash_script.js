@@ -120,6 +120,7 @@ legend.onAdd = function (map) {
         );
     }
     div.innerHTML = labels.join('<br>');
+    div.innerHTML += '<br>NB: On the popup, "Unit 1" is usually the driver, "Unit 2" the walker or cyclist.'
     return div;
 };
 
